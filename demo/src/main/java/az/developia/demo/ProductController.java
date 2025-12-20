@@ -18,4 +18,18 @@ public class ProductController {
     public ProductEntity update(@RequestBody ProductEntity request) {
         return productService.update(request);
     }
+
+    @GetMapping("/{id}")
+    public ProductEntity findById(@PathVariable Long id){
+        return productService.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+         productService.delete(id);
+    }
+    @GetMapping("/customers")
+    public void findByCustomers(@RequestParam CustomerEntity customer){
+         productService.findByCustomer(customer);
+    }
+    
 }
