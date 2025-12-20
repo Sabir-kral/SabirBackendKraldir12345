@@ -5,15 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.util.List;
 
-@Entity
-@Table(name = "employee")
 @Data
-@NoArgsConstructor
+@Entity
+@Table(name = "Customer")
 @AllArgsConstructor
-public class EmployeeEntity {
+@NoArgsConstructor
+public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,10 +21,9 @@ public class EmployeeEntity {
     private String surname;
     private String email;
     private String phone;
-    private String salary;
-    private LocalDate birthday;
-    private LocalDate experienceYear;
+    private String Birthday;
 
-
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductEntity> product;
 
 }
