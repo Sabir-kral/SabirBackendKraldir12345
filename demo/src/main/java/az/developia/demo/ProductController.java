@@ -31,5 +31,5 @@ public class ProductController {
     public void findByCustomers(@RequestParam CustomerEntity customer){
          productService.findByCustomer(customer);
     }
-    
+
 }
