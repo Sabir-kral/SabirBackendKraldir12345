@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CustomerService {
     private final CustomerRepo repo;
-    public CustomerEntity post(CustomerEntity request){
-        CustomerEntity customer = new CustomerEntity();
+    public CustomerRequest post(CustomerRequest request){
+        CustomerRequest customer = new CustomerRequest();
         customer.setName(request.getName());
         customer.setSurname(request.getSurname());
         customer.setEmail(request.getEmail());

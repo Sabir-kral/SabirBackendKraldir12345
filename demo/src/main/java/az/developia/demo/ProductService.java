@@ -8,32 +8,33 @@ import org.springframework.stereotype.Service;
 public class ProductService {
     private final ProductRepo productRepo;
 
-    public ProductEntity register(ProductEntity request){
-        ProductEntity product = new ProductEntity();
+    public ProductRequest register(ProductRequest request){
+        ProductRequest product = new ProductRequest();
         product.setName(request.getName());
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         return product;
     }
 
-    public ProductEntity update(ProductEntity request) {
+    public ProductRequest update(ProductRequest request) {
         ProductEntity product = productRepo.findById(request.getId())
                 .orElseThrow(() -> new RuntimeException("Not found"));
         product.setName(request.getName());
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         productRepo.save(product);
-        return product;
+        return new ProductRequest();
     }
-    public ProductEntity findById(Long id){
-        return productRepo.findById(id).orElseThrow(()->new RuntimeException("Not Found"));
+    public ProductRequest findById(Long id){
+        ProductEntity productRequest = productRepo.findById(id).orElseThrow(()->new RuntimeException("Not Found"));
+        return new ProductRequest();
     }
     public void delete(Long id){
         ProductEntity product = productRepo.findById(id).orElseThrow(()->new RuntimeException("Not Found"));
          productRepo.delete(product);
     }
 
-    public void findByCustomer(CustomerEntity customer){
+    public void findByCustomer(CustomerRequest customer){
         productRepo.findByCustomer(customer);
     }
 

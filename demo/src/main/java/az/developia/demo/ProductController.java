@@ -10,17 +10,17 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ProductEntity post(ProductEntity request){
+    public ProductRequest post(@RequestBody ProductRequest request){
         return productService.register(request);
     }
 
     @PutMapping
-    public ProductEntity update(@RequestBody ProductEntity request) {
+    public ProductRequest update(@RequestBody ProductRequest request) {
         return productService.update(request);
     }
 
     @GetMapping("/{id}")
-    public ProductEntity findById(@PathVariable Long id){
+    public ProductRequest findById(@PathVariable Long id){
         return productService.findById(id);
     }
     @DeleteMapping("/{id}")
@@ -28,7 +28,7 @@ public class ProductController {
          productService.delete(id);
     }
     @GetMapping("/customers")
-    public void findByCustomers(@RequestParam CustomerEntity customer){
+    public void findByCustomers(@RequestParam CustomerRequest customer){
          productService.findByCustomer(customer);
     }
 

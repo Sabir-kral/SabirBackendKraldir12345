@@ -10,7 +10,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public CustomerEntity post(CustomerEntity request){
+    public CustomerRequest post(CustomerRequest request){
         return customerService.post(request);
     }
 

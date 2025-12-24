@@ -3,7 +3,7 @@ package az.developia.demo;
 import lombok.Data;
 
 @Data
-public class ProductRequest {
+public class ProductResponse {
     private Integer id;
     private String name;
     private String description;
