@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CustomerMapper {
-    public static CustomerRequest toDTO(CustomerEntity customer) {
-        CustomerRequest response = new CustomerRequest();
+    public static CustomerResponse toDTO(CustomerEntity customer) {
+        CustomerResponse response = new CustomerResponse();
         response.setId(customer.getId());
         response.setName(customer.getName());
         response.setSurname(customer.getSurname());
@@ -14,7 +14,7 @@ public class CustomerMapper {
         response.setBirthday(customer.getBirthday());
         return response;
     }
-    public static List<CustomerRequest> toDTOList(List<CustomerEntity> customers) {
+    public static List<CustomerResponse> toDTOList(List<CustomerEntity> customers) {
         return customers
                 .stream()
                 .map(CustomerMapper::toDTO)

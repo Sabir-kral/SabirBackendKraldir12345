@@ -16,8 +16,9 @@ public class CustomerService {
         customer.setBirthday(request.getBirthday());
         return customer;
     }
-    public CustomerEntity findById(Integer id){
-        return repo.findById(id);
+    public CustomerResponse findById(Long id){
+        CustomerEntity customer = repo.findById(id).orElseThrow(()->new RuntimeException("Not Found"));
+        return CustomerMapper.toDTO(customer);
     }
 
 

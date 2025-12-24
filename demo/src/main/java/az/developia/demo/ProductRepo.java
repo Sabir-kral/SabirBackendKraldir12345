@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ProductRepo extends JpaRepository<ProductEntity,Long> {
 
     Optional<ProductEntity> findById(Integer id);
-    CustomerRequest findByCustomer(CustomerRequest customer);
+    CustomerResponse findByCustomer(CustomerResponse customer);
 
 
 
