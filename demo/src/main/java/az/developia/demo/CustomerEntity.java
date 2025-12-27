@@ -5,11 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
-@Data
 @Entity
-@Table(name = "Customer")
+@Table(name = "customer")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerEntity {
@@ -19,11 +20,17 @@ public class CustomerEntity {
 
     private String name;
     private String surname;
-    private String email;
-    private String phone;
-    private String Birthday;
+    private LocalDate birthday;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductEntity> product;
+    @OneToOne
+    @JoinColumn(name = "customer")
+    private UserEntity user_id;
+
+    @OneToMany(mappedBy = "customer_id",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ProductEntity> products;
+
+    @OneToMany(mappedBy = "customer_id",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<OrderEntity> orders;
+
 
 }

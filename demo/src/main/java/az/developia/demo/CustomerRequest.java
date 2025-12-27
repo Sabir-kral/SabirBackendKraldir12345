@@ -2,12 +2,15 @@ package az.developia.demo;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class CustomerRequest {
     private Integer id;
     private String name;
     private String surname;
-    private String email;
-    private String phone;
-    private String birthday;
+    private LocalDate birthday;
+    private Integer user_id;
+    private ProductEntity product_id;
+    private OrderEntity orders;
 }

@@ -3,20 +3,20 @@ package az.developia.demo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/customers")
 @RequiredArgsConstructor
 public class CustomerController {
     private final CustomerService customerService;
 
-    @PostMapping
-    public CustomerRequest post(CustomerRequest request){
-        return customerService.post(request);
+    @GetMapping
+    private List<CustomerResponse> findAll(){
+        return customerService.findAll();
     }
-
-    @GetMapping("/{id}")
-    public CustomerResponse findById(@PathVariable Long id){
-        CustomerResponse customer = customerService.findById(id);
-        return customer;
+    @PostMapping
+    public CustomerResponse add(@RequestBody CustomerRequest request){
+        return customerService.add(request);
     }
 }

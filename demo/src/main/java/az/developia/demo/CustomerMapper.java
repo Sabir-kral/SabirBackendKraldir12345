@@ -9,15 +9,12 @@ public class CustomerMapper {
         response.setId(customer.getId());
         response.setName(customer.getName());
         response.setSurname(customer.getSurname());
-        response.setEmail(customer.getEmail());
-        response.setPhone(customer.getPhone());
         response.setBirthday(customer.getBirthday());
+        response.setUser_id(new UserEntity().getCustomer().getId());
+
         return response;
     }
-    public static List<CustomerResponse> toDTOList(List<CustomerEntity> customers) {
-        return customers
-                .stream()
-                .map(CustomerMapper::toDTO)
-                .collect(Collectors.toList());
+    public static List<CustomerResponse> toDTOList(List<CustomerEntity> users) {
+        return users.stream().map(CustomerMapper::toDTO).collect(Collectors.toList());
     }
 }
