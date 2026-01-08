@@ -4,17 +4,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CustomerMapper {
-    public static CustomerResponse toDTO(CustomerEntity customer) {
-        CustomerResponse response = new CustomerResponse();
-        response.setId(customer.getId());
-        response.setName(customer.getName());
-        response.setSurname(customer.getSurname());
-        response.setBirthday(customer.getBirthday());
-        response.setUser_id(new UserEntity().getCustomer().getId());
+    public static CustomerResponse toDTO(CustomerEntity entity){
+        CustomerResponse customerResponse = new CustomerResponse();
+        customerResponse.setId(entity.getId());
+        customerResponse.setName(entity.getName());
+        customerResponse.setSurname(entity.getSurname());
 
-        return response;
+        return customerResponse;
     }
-    public static List<CustomerResponse> toDTOList(List<CustomerEntity> users) {
-        return users.stream().map(CustomerMapper::toDTO).collect(Collectors.toList());
+
+    public static List<CustomerResponse> toDTOList(List<CustomerEntity> entities){
+        return entities.stream().map(CustomerMapper::toDTO).collect(Collectors.toList());
     }
 }

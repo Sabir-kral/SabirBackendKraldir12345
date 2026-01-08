@@ -6,15 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "log")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerEntity {
+public class LogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String surname;
+    private String message;
+    private String logType;
 }
