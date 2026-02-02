@@ -1,5 +1,6 @@
 package az.developia.demo;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,8 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public void register(@RequestBody ProductRequest request){
+
+    public void register(@RequestBody @Valid ProductRequest request){
         productService.add(request);
     }
 
