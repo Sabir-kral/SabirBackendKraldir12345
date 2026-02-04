@@ -5,23 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name = "product")
+@Table(name = "computer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductEntity {
+public class ComputerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String description;
+    private String brand;
+    private String model;
     private Long price;
-    private LocalDate productYear;
-    private String productLink;
-
+    private String color;
 
 }
